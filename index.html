@@ -26,7 +26,64 @@
             </div>
         </div>
     </div>
+    <!-- -----------about me---------------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/profile image.png" alt="profile image" width="550px" height="600px">
+                </div>
+                <div class="about-col-2">
+                    <h1 class ="subtitle">About Me</h1>
+                    <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                        Animi necessitatibus eius voluptate reprehenderit. Obcaecati 
+                        ullam ducimus labore optio quod molestiae. Illo, officia similique 
+                        magni rerum fuga vitae debitis architecto blanditiis?</p>
 
+                        <div class ="tab-titles">
+                            <div class="tab-links active-link" onclick="opentab('skills')">Skills</div>
+                            <div class="tab-links" onclick="opentab('experience')">Experience</div>
+                            <div class="tab-links" onclick="opentab('education')">Education</div>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>UI/UX</span><br>Desiging Web/App Interfaces</li>
+                                <li><span>Web Development</span><br>Building Responsive Websites</li>
+                                <li><span>App Development</span><br>Building Android and IOS Apps</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>Date</span><br>Experience Completed</li>
+                                <li><span>Date</span><br>Experience Completed</li>
+                                <li><span>Date</span><br>Experience Completed</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>Date</span><br>Education Completed</li>
+                                <li><span>Date</span><br>Education Completed</li>
+                                <li><span>Date</span><br>Education Completed</li>
+                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
 </body>
 
 </html>
