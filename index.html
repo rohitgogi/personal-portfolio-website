@@ -13,12 +13,22 @@
         <div class="container">
             <nav>
                 <img src="images/logo.png" alt="logo" class="logo">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                        viewBox="0 0 16 16" onclick="closemenu()">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
                 </ul>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                    viewBox="0 0 16 16" onclick="openmenu()">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
             </nav>
             <div class="header-text">
                 <p>Software Developer</p>
@@ -163,33 +173,62 @@
                         </div>
                     </div>
                     <div class="contact-right">
-                        <form>
+                        <form name="submit-to-google-sheet">
                             <input type="text" name="Name" placeholder="Your Name" required>
                             <input type="email" name="Email" placeholder="Your Email" required>
                             <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                             <button type="submit" class="btn btn2">Submit</button>
                         </form>
+                        <span id="msg"></span>
                     </div>
                 </div>
                 <div class="copyright">
                     <p>Created by <span>Rohit Prakash Gogi</span> | &copy; 2023 All rights reserved</p>
-            </div>
+                </div>
 
-            <!-- -----------javascript stuff---------------- -->
-            <script>
-                var tablinks = document.getElementsByClassName("tab-links");
-                var tabcontents = document.getElementsByClassName("tab-contents");
-                function opentab(tabname) {
-                    for (tablink of tablinks) {
-                        tablink.classList.remove("active-link");
+                <!-- -----------javascript stuff---------------- -->
+                <script>
+                    var tablinks = document.getElementsByClassName("tab-links");
+                    var tabcontents = document.getElementsByClassName("tab-contents");
+                    function opentab(tabname) {
+                        for (tablink of tablinks) {
+                            tablink.classList.remove("active-link");
+                        }
+                        for (tabcontent of tabcontents) {
+                            tabcontent.classList.remove("active-tab");
+                        }
+                        event.currentTarget.classList.add("active-link");
+                        document.getElementById(tabname).classList.add("active-tab");
                     }
-                    for (tabcontent of tabcontents) {
-                        tabcontent.classList.remove("active-tab");
+                </script>
+
+                <script>
+                    var sidemenu = document.getElementById("sidemenu");
+
+                    function openmenu() {
+                        sidemenu.style.right = "0";
                     }
-                    event.currentTarget.classList.add("active-link");
-                    document.getElementById(tabname).classList.add("active-tab");
-                }
-            </script>
+
+                    function closemenu() {
+                        sidemenu.style.right = "-200px";
+                    }
+                </script>
+                <script>
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbzb6unH0BSQa52NOGd-OkIFI3MKqSfvqcUdx4tkemcdRP9pIsH8ZQeOMfGkhkQ0SKsB-g/exec'
+                    const form = document.forms['submit-to-google-sheet']
+                    const msg = document.getElementById('msg')
+
+                    form.addEventListener('submit', e => {
+                        e.preventDefault()
+                        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                            .then(response => {msg.innerHTML = "Message Sent Successfully!"; setTimeout(function(){
+                                msg.innerHTML=""
+                            },1000)
+                            form.reset()  
+                            })  
+                            .catch(error => console.error('Error!', error.message))
+                    })
+                </script>
 </body>
 
 </html>
