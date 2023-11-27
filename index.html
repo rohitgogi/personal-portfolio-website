@@ -61,21 +61,24 @@
                     </div>
                     <div class="tab-contents" id="experience">
                         <ul>
-                            <li><span>August 2021-September 2021</span><br><b>Mod Squad Member – MOD Pizza</b>,
+                            <li><span>August 2021-September 2021</span><br><b>Mod Squad Member – MOD Pizza</b>
                                <br>      • Ensured a clean and safe environment for customers and staff, maintaining hygiene and safety standards 
-                                in compliance with industry regulations. 
+                                in compliance with industry regulations. <br>             
                                 <br>      • Exemplified exceptional customer service skills by engaging with customers, addressing their needs, and 
-                                ensuring high-quality food service. 
+                                ensuring high-quality food service. <br>             
                                 <br>      • Applied teamwork and communication skills to collaborate with colleagues, contributing to a positive 
                                 work environment and efficient operations</li>
-                            <li><span>August 2021 - May 2022</span><br><b>Social Media and Outreach Intern – The Place of Forsyth</b>,
-                                <br>      • Managed charity thrift store’s social media presence across from TikTok, Facebook and more.
+                            <li><span>August 2021 - May 2022</span><br><b>Social Media and Outreach Intern – The Place of Forsyth</b>
+                                <br>      • Managed charity thrift store’s social media presence across from TikTok, Facebook and more. <br>             
                                 <br>      • Created and edited visually appealing photos, graphics, and videos to showcase merchandise on social 
-                                media as well as train new volunteers.
+                                media as well as train new volunteers. <br>             
                                 <br>      • Developed a content calendar and maintained the posting schedule to regularly update followers and 
-                                attract new local customers.
+                                attract new local customers. <br>             
                                 <br>      • Collaborated with marketing team to optimize the social media strategy and maximize outreach</li>
-                            <li><span>September 2023 - Ongoing</span><br><b>Technical Support Agent - Office of Information Technology of Georgia Institute of Technology</b>,<br> (recently started)</li>
+                            <li><span>September 2023 - Ongoing</span><br><b>Technical Support Agent - Office of Information Technology of Georgia Institute of Technology</b><br> 
+                                <br>      • Delivered network and hardware assistance to Georgia Tech users, overseeing incident cases and applying endpoint security measures.<br>             
+                                <br>      • Supported the operation of over 3,000 devices in active deployments<br>             
+                                <br>      • Employed Active Directory services for the regulation of user and group permissions, while participating in analytics-driven enhancements.</li>
                         </ul>
                     </div>
                     <div class="tab-contents" id="education">
@@ -137,8 +140,8 @@
                                 animation to learn more about keyframes and css in general.<br>
                                 <br> <br> <br>
                             </p>
-                            <a href="https://rohitgogi.github.io/fall23-dev-bootcamp-assessment/" class="external-link"
-                                target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                            <a href="https://rohitgogi.github.io/fall23-dev-bootcamp-assessment/" class="external-link" target="_blank"> <svg
+                                    xmlns="http://www.w3.org/2000/svg" height="1em"
                                     viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                     <path
                                         d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z" />
@@ -146,7 +149,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="btn">See more</a>
+                 <a href="#portfolio" class="btn" id="seeMoreBtn">See more</a>
             </div>
         </div>
         <!-- -----------contact---------------- -->
@@ -239,6 +242,44 @@
                             .catch(error => console.error('Error!', error.message))
                     })
                 </script>
+                <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Counter to keep track of the number of additional cards added
+        let cardCounter = 0;
+
+        // Function to add more portfolio cards
+        function addMoreCards() {
+            const workList = document.querySelector('.work-list');
+
+            // You can customize the content of the new cards
+            for (let i = 0; i < 2; i++) {  // Add 2 more cards for example
+                const newCard = document.createElement('div');
+                newCard.classList.add('work');
+
+                newCard.innerHTML = `
+                    <img src="images/placeholder.png" alt="placeholder">
+                    <div class="layer">
+                        <h3 class="title-for-port">Placeholder Project ${cardCounter + 1}</h3>
+                        <p>This is a placeholde to test out the "See more" button</p>
+                        <a href="#" class="external-link" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <!-- Your SVG path here -->
+                            </svg>
+                        </a>
+                    </div>
+                `;
+
+                workList.appendChild(newCard);
+                cardCounter++;
+            }
+        }
+
+        // Event listener for the "See more" button
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        seeMoreBtn.addEventListener('click', addMoreCards);
+    });
+</script>
+
 </body>
 
 </html>

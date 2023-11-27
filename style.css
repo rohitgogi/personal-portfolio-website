@@ -37,6 +37,14 @@ nav {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    /* Add your desired background color */
+    z-index: 1000;
+    /* Adjust the z-index as needed */
 }
 
 .logo {
@@ -150,15 +158,22 @@ nav ul li a:hover::after {
     width: 50%;
 }
 
+
+.tab-contents ul {
+    padding-left: 20px;
+    /* Add padding to the left for better alignment */
+}
+
 .tab-contents ul li {
     list-style: none;
-    margin: 10px 0;
+    margin: 20px 0;
     padding: 10px 0;
 }
 
 .tab-contents ul li span {
     color: #4056A1;
     font-size: 14px;
+    display: block;
 }
 
 .tab-contents {
@@ -168,6 +183,17 @@ nav ul li a:hover::after {
 .tab-contents.active-tab {
     display: block;
 
+}
+
+.tab-contents ul b {
+    color: #fff;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tab-contents ul li br {
+    margin: 10px;
 }
 
 /* --------- portfolio section --------- */
@@ -403,6 +429,9 @@ nav svg{
     .about-col-1, .about-col-2{
         flex-basis: 100%;
     }
+    .about-col-1 img{
+        width: 75%;
+    }
     .about-col-1{
         margin-bottom: 30px;
     }
@@ -433,4 +462,12 @@ nav svg{
     color: #61b752;
     margin-top: -40px;
     display: block;
+}
+
+.additional-work {
+    display: none;
+}
+
+.hidden {
+    display: none;
 }
